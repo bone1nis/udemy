@@ -4,4 +4,4 @@
 
 let arr = [3, 5, 1, 1];
 
-console.log( arr.some(item => item > 0 ? true : false) );
+console.log( arr.some(item => item > 0) );

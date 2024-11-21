@@ -4,4 +4,4 @@
 
 let arr = [3, 5, 1, 14];
 
-console.log( arr.some( (item, index) => (item * index) > 30 ? true : false) );
+console.log( arr.some( (item, index) => (item * index) > 30) );
