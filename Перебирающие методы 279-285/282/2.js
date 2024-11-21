@@ -5,4 +5,4 @@
 
 let arr = [3, 22, 1, 1];
 
-console.log( arr.every( (item, index) => (item * index) < 30 ? true : false) );
+console.log( arr.every( (item, index) => (item * index) < 30) );
