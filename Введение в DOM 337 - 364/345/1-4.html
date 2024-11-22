@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button1">text</button>
+    <button id="button2">text</button>
+    <button id="button3">text</button>
+    <button id="button4">text</button>
+    <script>
+        "use strict";
+
+        let button1 = document.querySelector("#button1");
+        let button2 = document.querySelector("#button2");
+        let button3 = document.querySelector("#button3");
+        let button4 = document.querySelector("#button4");
+        
+        button1.addEventListener("dblclick", () => alert("Нажали два раза"));
+        button2.addEventListener("mouseover", () => alert("Навели"));
+        button3.addEventListener("mouseout", () => alert("Убрали курсор"));
+        
+        button4.addEventListener("mouseover", () => alert("Навели курсор на спец. кнопку"));
+        button4.addEventListener("mouseout", () => alert("Убрали курсор со спец. кнопки"));
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="elem">text</p>
+    <script>
+        "use strict";
+
+        function func1() {
+        	console.log('1');
+        }
+        
+        function func2() {
+        	console.log('2');
+        }
+        
+        function func3() {
+        	console.log('3');
+        }
+
+        let text = document.querySelector("#elem");
+
+        text.addEventListener("click", func1);
+        text.addEventListener("click", func2);
+        text.addEventListener("click", func3);
+    </script>
+</body>
+</html>
