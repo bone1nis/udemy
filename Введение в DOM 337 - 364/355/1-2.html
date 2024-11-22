@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="text1">Текст</p>
+    <p class="text2">Текст</p>
+    <p class="text3">Текст</p>
+    <p class="text4">Текст</p>
+    <p class="text5">Текст</p>
+
+    <input type="text" id="input1" value="2">
+    <input type="text" id="input2" value="3">
+    <input type="text" id="input3" value="5">
+    
+
+    <script>
+        "use strict";
+        document.querySelector(".text1").addEventListener("click", addSign);
+        document.querySelector(".text2").addEventListener("click", addSign);
+        document.querySelector(".text3").addEventListener("click", addSign);
+        document.querySelector(".text4").addEventListener("click", addSign);
+        document.querySelector(".text5").addEventListener("click", addSign);
+
+        function addSign() {
+            this.textContent += "!";
+        }
+
+        document.querySelector("#input1").addEventListener("blur", exponentiation);
+        document.querySelector("#input2").addEventListener("blur", exponentiation);
+        document.querySelector("#input3").addEventListener("blur", exponentiation);
+
+        function exponentiation() {
+            this.value = this.value ** 2;
+        }
+    </script>
+</body>
+</html>

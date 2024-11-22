@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button1">Кнопка</button>
+    <p id="text1">Текст</p>
+    <button id="button2">Кнопка</button>
+    <p id="text2">Текст</p>
+    <script>
+        "use strict";
+        let button1 = document.querySelector("#button1");
+        let text1 = document.querySelector("#text1");
+
+        let button2 = document.querySelector("#button2");
+        let text2 = document.querySelector("#text2");
+
+        button1.addEventListener("click", () => console.log(text1.innerHTML));
+
+        button2.addEventListener("click", () => text2.innerHTML = "<b>" + text1.textContent + "<b>");
+    </script>
+</body>
+</html>

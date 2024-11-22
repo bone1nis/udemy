@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button1">Кнопка</button>
+    <p class="text1">Текст</p>
+    <a href="#" class="link1">Ссылка</a>
+
+    <button id="button2">Кнопка</button>
+    <a href="#" class="link2">Ссылка</a>
+
+    <script>
+        "use strict";
+        let button1 = document.querySelector("#button1");
+        let text1 = document.querySelector(".text1");
+        let link1 = document.querySelector(".link1");
+
+        let button2 = document.querySelector("#button2");
+        let link2 = document.querySelector(".link2");
+
+        button1.addEventListener("click", () => text1.textContent = link1.href);
+
+        button2.addEventListener("click", () => link2.textContent = link2.textContent + link2.href);
+    </script>
+</body>
+</html>

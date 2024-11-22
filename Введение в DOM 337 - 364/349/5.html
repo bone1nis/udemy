@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button1">Кнопка</button>
+    <input type="text" id="input1">
+    <input type="text" id="input2">
+    <input type="text" id="input3">
+    <input type="text" id="input4">
+    <input type="text" id="input5">
+    <p class="text">Текст</p>
+
+    <script>
+        "use strict";
+        let button1 = document.querySelector("#button1");
+        let input1 = document.querySelector("#input1");
+        let input2 = document.querySelector("#input2");
+        let input3 = document.querySelector("#input3");
+        let input4 = document.querySelector("#input4");
+        let input5 = document.querySelector("#input5");
+        let text = document.querySelector(".text");
+
+        button1.addEventListener("click", () => text.textContent = (+input1.value + +input2.value + +input3.value + +input4.value + +input5.value) / 5);
+    </script>
+</body>
+</html>

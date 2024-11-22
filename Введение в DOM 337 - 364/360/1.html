@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="text">Текст</p>
+    <p class="text">Текст</p>
+    <p class="text">Текст</p>
+    <p class="text">Текст</p>
+    <p class="text">Текст</p>
+    <p class="text">Текст</p>
+
+    <script>
+        "use strict";
+
+        let allText = document.querySelectorAll(".text");
+
+        for (let elem of allText) {
+            elem.addEventListener("click", addSign);
+        }
+
+        function addSign() {
+            this.textContent += "!";
+            this.removeEventListener("click", addSign);
+        }
+    </script>
+</body>
+</html>

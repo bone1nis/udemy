@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button1">Кнопка</button>
+    <p id="text1">длинный текст</p>
+    <button id="button2">Кнопка</button>
+    <p id="text2">очень длинный текст</p>
+    <script>
+        "use strict";
+        let text1 = document.querySelector("#text1");
+        let button1 = document.querySelector("#button1");
+
+        let text2 = document.querySelector("#text2");
+        let button2 = document.querySelector("#button2");
+
+        let text1
+
+        button1.addEventListener("click", () => console.log(text1.textContent));
+        button2.addEventListener("click", () => text2.textContent = "поменялся");
+    </script>
+</body>
+</html>

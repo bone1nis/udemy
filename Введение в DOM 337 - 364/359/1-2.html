@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://vk.com" class="link">Ссылка</a>
+    <button class="button">Кнопка</button>
+
+    <!--2-->
+
+    <button class="button2">1</button>
+
+    <script>
+        "use strict";
+        let button = document.querySelector(".button");
+        let link = document.querySelector(".link");
+
+        button.addEventListener("click", addHref);
+
+        function addHref() {
+            link.textContent += `(${link.href})`;
+            this.removeEventListener("click", addHref);
+        }
+
+        // 2
+
+        let button2 = document.querySelector(".button2");
+
+        button2.addEventListener("click", upToTen);
+
+        function upToTen() {
+            if (this.textContent < 10) {
+                ++this.textContent;
+            } else {
+                this.removeEventListener("click", upToTen);
+            }
+        }
+    </script>
+</body>
+</html>

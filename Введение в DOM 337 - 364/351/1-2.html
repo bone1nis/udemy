@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="elem1" class="content no-gap"></div>
+    <button class="button1">Кнопка</button>
+
+    <div id="elem2" class="aaa bbb ccc"></div>
+    <button class="button2">Кнопка</button>
+    <script>
+        "use strict";
+        let button1 = document.querySelector(".button1");
+        let div1 = document.querySelector("#elem1");
+
+        button1.addEventListener("click", () =>  alert(div1.className));
+
+        let button2 = document.querySelector(".button2");
+        let div2 = document.querySelector("#elem2");
+
+        button2.addEventListener("click", () => console.log(div2.className.split(" ")));
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="3">
+    <input type="text" value="3">
+    <input type="text" value="3">
+    <input type="text" value="3">
+    <input type="text" value="3">
+
+    <!--2-->
+
+    <p class="text">5</p>
+    <p class="text">5</p>
+    <p class="text">5</p>
+    <p class="text">5</p>
+    <p class="text">5</p>
+
+    <script>
+        "use strict";
+        let allInput = document.querySelectorAll("input");
+
+        for (let item of allInput) {
+            item.addEventListener("blur", func);
+        }
+
+        function func() {
+        	this.value = Number(this.value) + 1;
+        }
+
+        // 2
+
+        let allText = document.querySelectorAll(".text");
+
+        for (let item of allText) {
+            item.addEventListener("click", function() { item.textContent = (+item.textContent) ** 2});
+        }
+    </script>
+</body>
+</html>

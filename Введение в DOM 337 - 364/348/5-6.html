@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button1">Кнопка</button>
+    <p class="text1">Тут будет ссылка</p>
+    <img src="https://masterpiecer-images.s3.yandex.net/34e974e177bb11ee9ad5ceda526c50ab:upscaled" alt="Картинка" class="img1" height="300" width="300">
+
+    <img src="https://masterpiecer-images.s3.yandex.net/34e974e177bb11ee9ad5ceda526c50ab:upscaled" alt="Картинка" class="img2" height="300" width="600">
+    <button id="button2">Кнопка</button>
+    <script>
+        "use strict";
+        let button1 = document.querySelector("#button1");
+        let text1 = document.querySelector(".text1");
+        let img1 = document.querySelector(".img1");
+
+        let img2 = document.querySelector(".img2");
+        let button2 = document.querySelector("#button2");
+
+        button1.addEventListener("click", () => text1.textContent = img1.src);
+
+        button2.addEventListener("click", () => img2.width = 300);
+    </script>
+</body>
+</html>

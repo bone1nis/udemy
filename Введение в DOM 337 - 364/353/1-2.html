@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input1">
+
+    <button class="button">1</button>
+    <script>
+        "use strict";
+        let input1 = document.querySelector("#input1");
+
+        input1.addEventListener("focus", function() { this.value = "1"});
+        input1.addEventListener("blur", function() { this.value = "2"});
+
+        document.querySelector(".button").addEventListener("click", function() { this.textContent = +this.textContent + 1});
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input1">
+    
+    <input type="text" id="input2" value="Введите число">
+
+    <input type="text" id="input3" value="Текст">
+
+    <script>
+        "use strict";
+        let input1 = document.querySelector("#input1");
+
+        let input2 = document.querySelector("#input2");
+
+        let input3 = document.querySelector("#input3");
+
+        input1.addEventListener("focus", () => input1.value = "1");
+        input1.addEventListener("blur", () => input1.value = "2")
+
+        input2.addEventListener("blur", () => input2.value = input2.value ** 2);
+
+        input3.addEventListener("focus", () => input3.value = "");
+        input3.addEventListener("blur", () => input3.value = "Текст");
+    </script>
+</body>
+</html>

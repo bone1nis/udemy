@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button1">Кнопка</button>
+    <input id="elem1" type="email">
+
+    <button id="button2">Кнопка</button>
+    <input id="elem2" type="email">
+    <script>
+        "use strict";
+        let button1 = document.querySelector("#button1");
+        let input1 = document.querySelector("#elem1");
+
+        let button2 = document.querySelector("#button2");
+        let input2 = document.querySelector("#elem2");
+
+        button1.addEventListener("click", () => console.log(input1.type));
+
+        button2.addEventListener("click", () => input2.type = "submit");
+    </script>
+</body>
+</html>

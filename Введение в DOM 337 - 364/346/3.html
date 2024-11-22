@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button1">Сумма</button>
+    <p id="text1">123</p>
+    <p id="text2">345</p>
+    <script>
+        "use strict";
+        let button1 = document.querySelector("#button1");
+        let text1 = document.querySelector("#text1");
+        let text2 = document.querySelector("#text2");
+
+        button1.addEventListener("click", () => alert(+text1.textContent + +text2.textContent));
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button1">Кнопка</button>
+    <input type="text" id="input1">
+
+    <button id="button2">Кнопка</button>
+    <input type="text" id="input2" value="Ввод">
+    <p class="text2">Абзац</p>
+
+
+    <script>
+        "use strict";
+        let button1 = document.querySelector("#button1");
+
+        let button2 = document.querySelector("#button2");
+        let text2 = document.querySelector(".text2");
+        let input2 = document.querySelector("#input2");
+
+        button1.addEventListener("click", () => input1.value = "Новый текст");
+
+        button2.addEventListener("click", () => text2.textContent = input2.value);
+    </script>
+</body>
+</html>
