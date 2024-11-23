@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="elem" data-text="str">text</div>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <div class="div2" data-num="1">text</div>
+    <div class="div2" data-num="2">text</div>
+    <div class="div2" data-num="3">text</div>
+    <div class="div2" data-num="4">text</div>
+    <div class="div2" data-num="5">text</div>
+
+    <script>
+        "use strict";
+        let div1 = document.querySelector("#elem");
+
+        div1.addEventListener("click", () => div1.textContent += div1.dataset.text);
+
+        // 2
+
+        let div2 = document.querySelectorAll(".div2");
+
+        for (let elem of div2) {
+            elem.addEventListener("click", () => elem.textContent += elem.dataset.num);
+        }
+
+        // 2
+
+    </script>
+</body>
+</html>
