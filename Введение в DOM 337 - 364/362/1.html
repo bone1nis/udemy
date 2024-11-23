@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>2000</li>
+        <li>2004</li>
+        <li>2021</li>
+        <li>2022</li>
+        <li>2025</li>
+        <li>2031</li>
+    </ul>
+
+    <script>
+        "use strict";
+        let allItem = document.querySelectorAll("li");
+        let years = [];
+
+        for (let elem of allItem) { // Перебираем элементы li
+            if ( sum(elem.textContent) === 6) { 
+                years.push(elem.textContent); // Если сумма цифр = 6, то записываем в массив результатов
+            }
+        }
+
+        console.log( years.reduce((result, item) => result += +item, 0) ); // Сумма годов, сумма цифр которых равна 6
+        
+
+        function sum(str) {
+            let sum = 0;
+
+            for (let item of str) {
+                sum += +item;
+            }
+
+            return sum;
+        }
+    </script>
+</body>
+</html>
