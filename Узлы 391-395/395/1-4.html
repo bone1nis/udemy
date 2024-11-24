@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="elem1">txt<b>tag</b><!--com-->txt<b>tag</b><!--com--></div>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <div id="elem2">txt<b>tag</b><!--com-->txt<b>tag</b><!--com--></div>
+
+    <!--3--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">3</h2>
+
+    <div id="elem3">txt<b>tag</b><!--com-->txt<b>tag</b><!--com--></div>
+
+    <!--4--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">4</h2>
+
+    <div id="elem4">txt<b>tag</b><!--com-->txt<b>tag</b><!--com--></div>
+
+
+    <script>
+        "use strict";
+        let parent1 = document.querySelector('#elem1');
+
+        for (let elem of parent1.childNodes) {
+            console.log(elem.textContent);
+        }
+        
+        console.log("2"); // 2
+
+        let parent2 = document.querySelector("#elem2");
+
+        for (let elem of parent2.childNodes) {
+            if (elem.nodeType === 3 || elem.nodeType === 8) {
+                console.log(elem.data);
+            }
+        }
+
+        console.log("3"); // 3
+
+        let parent3 = document.querySelector("#elem3");
+
+        for (let node of parent3.childNodes) {
+            if (node.nodeType === 1 || node.nodeType === 3) {
+                console.log(node.textContent);
+            }
+        }
+
+        console.log("4"); // 4
+
+        let parent4 = document.querySelector("#elem4");
+
+        for (let node of parent4.childNodes) {
+            node.textContent += ` ${node.nodeType} `;
+        }
+
+        
+    </script>
+</body>
+</html>

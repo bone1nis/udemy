@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input1">
+    <input type="text" id="input2">
+
+    <script>
+        "use strict";
+        let input1 = document.querySelector("#input1");
+        let input2 = document.querySelector("#input2");
+
+        input1.addEventListener("input", function () {
+            if (input1.value.length === 2) {
+                input2.focus();
+            }
+        });
+        input2.addEventListener("input", function () {
+            if (input2.value.length === 2) {
+                input2.blur();
+            }
+        });
+    </script>
+</body>
+</html>

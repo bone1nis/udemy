@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input1">
+    <button class="btn1">Заблокировать</button>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <input type="text" id="input2">
+    <button class="btn2-close">Заблокировать</button>
+    <button class="btn2-open">Разблокировать</button>
+
+    <!--3--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">3</h2>
+
+    <input type="text" id="input3">
+    <button class="btn3">Узнать статус поля ввода</button>
+
+
+    <script>
+        "use strict";
+        let input1 = document.querySelector("#input1");
+        let btn1 = document.querySelector(".btn1");
+
+        btn1.addEventListener("click", () => input1.disabled = true);
+
+        // 2
+
+        let input2 = document.querySelector("#input2");
+        let btn2Close = document.querySelector(".btn2-close");
+        let btn2Open = document.querySelector(".btn2-open");
+
+        btn2Close.addEventListener("click", () => input2.disabled = true);
+        btn2Open.addEventListener("click", () => input2.disabled = false);
+
+        // 3
+
+        let input3 = document.querySelector("#input3");
+        let btn3 = document.querySelector(".btn3");
+
+        btn3.addEventListener("click", () => input3.disabled === true ? alert("Заблокировано") : alert("Разблокировано"));
+
+    </script>
+</body>
+</html>

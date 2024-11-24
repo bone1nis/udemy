@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div>
+            <p>
+                <span id="elem1"></span>
+            </p>
+        </div>
+    </header>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <header>
+        <div class="www">
+            <p class="www">
+                <span id="elem2"></span>
+            </p>
+        </div>
+    </header>
+
+
+    <script>
+        "use strict";
+        let elem1 = document.querySelector("#elem1");
+
+        let parent1 = elem1.closest("div");
+
+        // 2
+
+        let elem2 = document.querySelector("#elem2");
+
+        let parent2 = elem2.closest(".www");
+
+        
+    </script>
+</body>
+</html>

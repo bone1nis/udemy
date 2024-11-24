@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="radio" name="elem" value="1">
+    <input type="radio" name="elem" value="2">
+    <input type="radio" name="elem" value="3">
+    <p>Текст</p>
+    <button class="btn">Кнопка</button>
+
+
+    <script>
+        "use strict";
+        let btn = document.querySelector(".btn");
+        let text = document.querySelector("p");
+        let allRadio = document.querySelectorAll("input[name='elem']");
+
+        btn.addEventListener("click", function () {
+            for (let radio of allRadio) {
+                if (radio.checked) {
+                    text.textContent = radio.value;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

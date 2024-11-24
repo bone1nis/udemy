@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>text</li>
+        <li>text</li>
+        <li id="elem1">text</li>
+        <li>text</li>
+        <li>text</li>
+    </ul>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <ul>
+        <li>text</li>
+        <li>text</li>
+        <li id="elem2">text</li>
+        <li>text</li>
+        <li>text</li>
+    </ul>
+
+    <!--3--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">3</h2>
+
+    <ul>
+        <li>text</li>
+        <li>text</li>
+        <li id="elem3">text</li>
+        <li>text</li>
+        <li>text</li>
+    </ul>
+
+    <!--4--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">4</h2>
+
+    <ul>
+        <li>text1</li>
+        <li>text2</li>
+        <li id="elem4">text3</li>
+        <li>text4</li>
+        <li>text5</li>
+    </ul>
+
+
+    <script>
+        "use strict";
+        let elem1 = document.querySelector("#elem1");
+
+        elem1.previousElementSibling.textContent += "!";
+
+        // 2
+
+        let elem2 = document.querySelector("#elem2");
+
+        elem2.nextElementSibling.textContent += "!";
+
+        // 3
+
+        let elem3 = document.querySelector("#elem3");
+
+        elem3.nextElementSibling.nextElementSibling.textContent += "!";
+
+        // 4
+
+        let elem4 = document.querySelector("#elem4");
+
+        [elem4.previousElementSibling.textContent, elem4.nextElementSibling.textContent] = [elem4.nextElementSibling.textContent, elem4.previousElementSibling.textContent]
+        
+    </script>
+</body>
+</html>

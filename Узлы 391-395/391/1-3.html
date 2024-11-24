@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="parent">
+        <p class="www">text</p>
+        
+        <p class="www">text</p>
+        <p class="www">text</p>
+        <p class="ggg">text</p><!--s-->
+        <p class="ggg">text</p>
+        <p class="ggg">text</p>
+        
+    <!--s--></div>
+
+
+    <script>
+        "use strict";
+        let parent = document.querySelector('#parent');
+
+        let result1 = parent.lastChild;
+        let result2 = parent.lastElementChild;
+
+        let result3 = parent.querySelector(".www").nextSibling;
+        let result4 = parent.querySelector(".www").nextElementSibling;
+
+        let result5 = parent.querySelector(".ggg").nextSibling;
+        let result6 = parent.querySelector(".ggg").nextElementSibling;
+
+        
+    </script>
+</body>
+</html>

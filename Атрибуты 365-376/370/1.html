@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="elem" data-product-price="1000" data-product-amount="5">
+        Товар яблоки
+    </div>
+
+    <script>
+        "use strict";
+        let div = document.querySelector("#elem");
+
+        div.addEventListener("click", function addPrice() {
+            div.textContent += +div.dataset.productPrice * +div.dataset.productAmount 
+            div.removeEventListener("click", addPrice);
+        });
+    </script>
+</body>
+</html>

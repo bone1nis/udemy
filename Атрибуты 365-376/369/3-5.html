@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn3-1" data-click="0">Кнопка</button>
+    <button class="btn3-2">Кнопка 2</button>
+
+    <!--4--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">4</h2>
+
+    <input id="elem1" data-length="5">
+
+    <!--5--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">5</h2>
+
+    <input id="elem2" data-min="5" data-max="10">
+
+    <script>
+        "use strict";
+        let btnActive = document.querySelector(".btn3-1");
+        let btnDerive = document.querySelector(".btn3-2");
+
+        btnActive.addEventListener("click", () => btnActive.dataset.click = +btnActive.dataset.click + 1);
+        btnDerive.addEventListener("click", () => alert(btnActive.dataset.click));
+
+        // 4
+
+        let input4 = document.querySelector("#elem1");
+
+        input4.addEventListener("blur", () => { if (input4.value.split("").length !== +input4.dataset.length) alert(`Символы не равны этому количеству: ${input4.dataset.length}`) });
+
+        // 5 
+
+        let input5 = document.querySelector("#elem2");
+
+        input5.addEventListener("blur", () => { if ( !(input5.dataset.min <= input5.value.split("").length && input5.value.split("").length <= input5.dataset.max) ) alert(`Символы не входят в диапазон от ${input5.dataset.min} до ${input5.dataset.max}`) });
+
+
+    </script>
+</body>
+</html>

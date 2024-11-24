@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .border-green {
+            border-color: green;
+        }
+        .border-red {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="input1">
+    <p class="text1">Текст</p>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <input type="checkbox" id="input2">
+
+    <!--4--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">4</h2>
+
+    <input type="text" id="input4">
+
+    <script>
+        "use strict";
+        let input1 = document.querySelector("#input1");
+        let text1 = document.querySelector(".text1");
+
+        input1.addEventListener("change", () => text1.textContent = input1.value);
+
+        // 2
+
+        let input2 = document.querySelector("#input2");
+
+        input2.addEventListener("change", () => alert(input2.checked));
+
+        // 4
+
+        let input4 = document.querySelector("#input4");
+
+        input4.addEventListener("change", function () {
+            if (input4.value.length < 5) {
+                input4.classList.add("border-green");
+                input4.classList.remove("border-red");
+            } else {
+                input4.classList.add("border-red");
+                input4.classList.remove("border-green");
+            }
+        });
+    </script>
+</body>
+</html>

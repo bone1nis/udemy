@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" id="input1">
+    <button class="btn1-checked">Отметить</button>
+    <button class="btn1-unchecked">Отменить</button>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <input type="checkbox" id="input2">
+    <button class="btn2">Отметить</button>
+    <p class="text2">Текст</p>
+
+    <script>
+        "use strict";
+        let input1 = document.querySelector("#input1");
+        let btn1Checked = document.querySelector(".btn1-checked");
+        let btn1Unchecked = document.querySelector(".btn1-unchecked");
+
+        btn1Checked.addEventListener("click", () => input1.checked = true);
+        btn1Unchecked.addEventListener("click", () => input1.checked = false);
+
+        // 2
+
+        let input2 = document.querySelector("#input2");
+        let btn2 = document.querySelector(".btn2");
+        let text2 = document.querySelector(".text2");
+
+        btn2.addEventListener("click", () => input2.checked === true ? text2.textContent = "Привет" : text2.textContent = "Пока");
+    </script>
+</body>
+</html>

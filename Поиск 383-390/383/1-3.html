@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="elem1">
+        <li>text</li>
+        <li>text</li>
+        <li>text</li>
+        <li>text</li>
+        <li>text</li>
+    </ul>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <ul id="elem2">
+        <li>text</li>
+        <li>text</li>
+        <li>text</li>
+        <li>text</li>
+        <li>text</li>
+    </ul>
+
+    <!--3--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">3</h2>
+
+    <ul id="elem3">
+        <li>text</li>
+        <li>text</li>
+        <li>text</li>
+        <li>text</li>
+        <li>text</li>
+    </ul>
+
+    <script>
+        "use strict";
+        let ul = document.querySelector("#elem1");
+
+        ul.firstElementChild.style.color = "red";
+
+        // 2
+
+        let ul2 = document.querySelector("#elem2");
+
+        ul2.lastElementChild.style.color = "red";
+
+        // 3
+
+        let elem3 = document.querySelector("#elem3");
+
+        for (let elem of elem3.children) {
+            elem.textContent += "!";
+        }
+    </script>
+</body>
+</html>

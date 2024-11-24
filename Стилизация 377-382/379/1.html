@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>Текст</li>
+        <li>Текст</li>
+        <li>Текст</li>
+        <li>Текст</li>
+        <li>Текст</li>
+    </ul>
+    <button>Кнопка</button>
+
+    <script>
+        "use strict";
+        let button = document.querySelector("button");
+        let li = document.querySelectorAll("li");
+
+        button.addEventListener("click", () => li.forEach(item => item.style.cssFloat = "left"));
+    </script>
+</body>
+</html>

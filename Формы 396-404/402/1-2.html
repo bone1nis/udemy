@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input1">
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <input type="text" id="input2">
+    <p class="text2">Еще можно ввести 5</p>
+
+    <script>
+        "use strict";
+        let input1 = document.querySelector("#input1");
+
+        input1.addEventListener("input", function () {
+            if (input1.value.length === 5) {
+                alert("Длина текста достигла 5");
+            }
+        });
+
+        // 2
+        let input2 = document.querySelector("#input2");
+        let text2 = document.querySelector(".text2");
+
+        input2.addEventListener("input", function () {
+            if (input2.value.length <= 5) {
+                text2.textContent = `Еще можно ввести ${5 - input2.value.length} символов`;
+            } else {
+                text2.textContent = `Длина текста превышена на ${input2.value.length - 5} символов`;
+            }
+        });
+    </script>
+</body>
+</html>
