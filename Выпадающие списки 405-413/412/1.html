@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="select1">
+        <option value="0">Январь</option>
+        <option value="1">Февраль</option>
+        <option value="2">Март</option>
+        <option value="3">Апрель</option>
+        <option value="4">Май</option>
+        <option value="5">Июнь</option>
+        <option value="6">Июль</option>
+        <option value="7">Август</option>
+        <option value="8">Сентябрь</option>
+        <option value="9">Октябрь</option>
+        <option value="10">Ноябрь</option>
+        <option value="11">Декабрь</option>
+    </select>
+    <button class="btn1">Кнопка</button>
+
+
+    <script>
+        "use strict";
+        let select1 = document.querySelector("#select1");
+        let btn1 = document.querySelector(".btn1");
+
+        btn1.addEventListener("click", () => select1[select1.length - 1].selected = true);
+
+        
+        
+    </script>
+</body>
+</html>

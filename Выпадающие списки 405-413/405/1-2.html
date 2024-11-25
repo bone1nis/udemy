@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="select1">
+        <option>one</option>
+	    <option selected>two</option>
+	    <option>three</option>
+    </select>
+    <p class="text1">Текст</p>
+    <button class="btn1">Кнопка</button>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+    <select id="select2">
+        <option>2020</option>
+        <option>2021</option>
+        <option>2022</option>
+        <option>2023</option>
+        <option>2024</option>
+        <option>2025</option>
+        <option>2026</option>
+        <option>2027</option>
+        <option>2028</option>
+        <option>2029</option>
+        <option>2030</option>
+    </select>
+
+
+    <script>
+        "use strict";
+        let btn1 = document.querySelector(".btn1");
+        let text1 = document.querySelector(".text1");
+        let select1 = document.querySelector("#select1");
+
+        btn1.addEventListener("click", () => text1.textContent = select1.value);
+
+        // 2
+
+        let select2 = document.querySelector("#select2");
+
+        select2.addEventListener("input", function () {
+            (+select2.value % 4) === 0 ? alert("Год високосный") : alert("Год не високосный");
+        });
+    </script>
+</body>
+</html>

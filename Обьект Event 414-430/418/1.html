@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" class="input1">
+
+    <script>
+        "use strict";
+        let input1 = document.querySelector(".input1");
+
+        input1.addEventListener("keypress", function (event) {
+            input1.value = `Символ: ${event.key} Код: ${event.code}`
+
+            if (event.code === "Backspace") {  // Не работает с backspace, ни в какую
+                console.log("Backspace нажат!"); 
+            }
+        });
+
+    </script>
+</body>
+</html>

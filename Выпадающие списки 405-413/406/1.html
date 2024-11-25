@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="select1">
+        <option value="1">Понедельник</option>
+        <option value="2">Вторник</option>
+        <option value="3">Среда</option>
+        <option value="4">Четверг</option>
+        <option value="5">Пятница</option>
+        <option value="6">Суббота</option>
+        <option value="7">Воскресенье</option>
+    </select>
+
+
+    <script>
+        "use strict";
+        let select1 = document.querySelector("#select1");
+
+        select1.addEventListener("change", function () {
+            if (select1.value >= 1 && select1.value <= 5) {
+                alert("Выбран рабочий день");
+            } else {
+                alert("Выбран выходной день");
+            }
+        });
+    </script>
+</body>
+</html>

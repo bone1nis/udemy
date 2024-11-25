@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="select1">
+        <option value="0">Январь</option>
+        <option value="1">Февраль</option>
+        <option value="2">Март</option>
+        <option value="3">Апрель</option>
+        <option value="4">Май</option>
+        <option value="5">Июнь</option>
+        <option value="6">Июль</option>
+        <option value="7">Август</option>
+        <option value="8">Сентябрь</option>
+        <option value="9">Октябрь</option>
+        <option value="10">Ноябрь</option>
+        <option value="11">Декабрь</option>
+    </select>
+    <input type="text" id="input1">
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <select id="select2">
+        <option>Понедельник</option>
+        <option>Вторник</option>
+        <option>Среда</option>
+        <option>Четверг</option>
+        <option>Пятница</option>
+        <option>Суббота</option>
+        <option>Воскресенье</option>
+    </select>
+
+
+    <script>
+        "use strict";
+        let select1 = document.querySelector("#select1");
+        let input1 = document.querySelector("#input1");
+
+        input1.addEventListener("blur", function() {
+            if (+input1.value >= 0 && +input1.value <= 11)
+            select1.selectedIndex = input1.value;
+        });
+
+        // 2
+
+        let select2 = document.querySelector("#select2");
+
+        select2.selectedIndex = getDayOfTheWeek();
+        
+        function getDayOfTheWeek() {
+            let date = new Date();
+            let arr = [6, 0, 1, 2, 3, 4, 5];
+
+            return arr[date.getDay()];
+        }
+        
+    </script>
+</body>
+</html>
