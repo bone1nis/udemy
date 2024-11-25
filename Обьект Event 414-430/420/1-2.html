@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://vk.com/" class="link1">Ссылка</a>
+    <a href="https://vk.com/" class="link1">Ссылка</a>
+    <a href="https://vk.com/" class="link1">Ссылка</a>
+    <a href="https://vk.com/" class="link1">Ссылка</a>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <input type="text" class="input2">
+    <input type="text" class="input2">
+    <p class="text2">Текст</p>
+    <a href="https://vk.com/" class="link2">Ссылка</a>
+
+
+    <script>
+        "use strict";
+        let allLinks1 = document.querySelectorAll(".link1");
+        allLinks1.forEach(item => item.addEventListener("click", function(event) {
+            item.textContent = item.href;
+            event.preventDefault();
+        }));
+
+        // 2
+        let link2 = document.querySelector(".link2");
+        let text2 = document.querySelector(".text2");
+        let allInput2 = document.querySelectorAll(".input2");
+
+
+        link2.addEventListener("click", function (event) {
+            text2.textContent = +allInput2[0].value + +allInput2[1].value;
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>

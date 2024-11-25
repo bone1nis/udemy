@@ -6,8 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    
     <input type="text" class="input1">
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <p class="text2">Текст</p>
+    <input type="text" class="input2">
 
     <script>
         "use strict";
@@ -18,6 +22,18 @@
 
             if (event.code === "Backspace") {  // Не работает с backspace, ни в какую
                 console.log("Backspace нажат!"); 
+            }
+        });
+
+        // 2
+
+        let input2 = document.querySelector(".input2");
+        let text2 = document.querySelector(".text2");
+
+        input2.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                text2.textContent = input2.value;
+                input2.value = "";
             }
         });
 
