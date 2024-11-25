@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="elem1" value="text1">
+    <input id="elem2" value="text2">
+    <input id="elem3" value="text3">
+
+
+    <script>
+        "use strict";
+        function func() {
+        	console.log(this.value);
+        }
+
+        func.call(document.querySelector("#elem1"));
+        func.call(document.querySelector("#elem2"));
+        func.call(document.querySelector("#elem3"));
+    </script>
+</body>
+</html>

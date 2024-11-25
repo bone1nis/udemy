@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+div, ul, li {
+	padding: 20px;
+}
+
+div {
+	border: 1px solid red;
+}
+ul {
+	border: 1px solid orange;
+}
+li {
+	border: 1px solid green;
+}
+        </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+
+
+    <script>
+        "use strict";
+        let div = document.querySelector("div");
+        let allLi = document.querySelector("li");
+        div.addEventListener("click", function(event) {
+            if (event.target.matches("div")) {
+                console.log("Событие сработало в теге div");
+            } else if (event.target.matches("ul")) {
+                console.log("Событие сработало в теге ul");
+            } else if (event.target.matches("li")) {
+                event.target.textContent += "!";
+            }
+        });
+    </script>
+</body>
+</html>

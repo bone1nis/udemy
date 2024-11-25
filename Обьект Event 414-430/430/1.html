@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>Пункт <b>123</b>списка</li>
+        <li>Пункт списка</li>
+        <li>Пункт сп<b>123</b>иска</li>
+        <li>Пун<b>123</b>кт списка</li>
+        <li>Пункт с<b>123</b>писка</li>
+    </ul>
+
+
+    <script>
+        "use strict";
+        let parent = document.querySelector("ul");
+
+        parent.addEventListener("click", function (event) {
+            event.target.closest("li").innerHTML += "!";
+        });
+    </script>
+</body>
+</html>

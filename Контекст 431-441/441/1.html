@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="elem" value="hello">
+
+
+    <script>
+        "use strict";
+        let elem = document.getElementById('elem');
+
+        function func(name, surname) {
+        	console.log(this.value + ', ' + name + ' ' + surname);
+        }
+
+        func = func.bind(elem)// тут напишите конструкцию с bind()
+
+        func('John', 'Smit'); // тут должно вывести 'hello, John Smit'
+        func('Eric', 'Luis'); // тут должно вывести 'hello, Eric Luis'
+    </script>
+</body>
+</html>
