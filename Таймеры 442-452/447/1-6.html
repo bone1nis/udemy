@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button class="btn1-1">Старт</button>
+    <button class="btn1-2">Стоп</button>
+
+    <!--6--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">6</h2>
+
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+
+    <script>
+        "use strict";
+        let btn1Start = document.querySelector(".btn1-1");
+        let btn1Stop = document.querySelector(".btn1-2")
+
+        let number = 10;
+        let timerId;
+
+        btn1Start.addEventListener("click", function () {
+            timerId = setInterval(() => {
+                if (number !== 0) {
+                    console.log(--number);
+                } else {
+                    clearInterval(timerId);
+                }
+            }, 1000)
+        });
+
+        btn1Stop.addEventListener("click", () => clearInterval(timerId));
+
+        // 2
+
+        let start = document.querySelector('#start');
+        let stop  = document.querySelector('#stop');
+        
+        let timerId2;
+
+        start.addEventListener('click', startTimer);
+        stop.addEventListener('click', stopTimer);
+
+        function startTimer() {
+        	timerId2 = setInterval(function() {
+        		console.log('!')
+        	}, 1000);
+
+            this.removeEventListener("click", startTimer);
+        }
+
+        function stopTimer() {
+        	clearInterval(timerId2);
+
+            start.addEventListener("click", startTimer);
+        }
+
+    </script>
+</body>
+</html>

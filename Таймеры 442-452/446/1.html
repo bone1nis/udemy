@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button class="btn">Кнопка</button>
+
+    <script>
+        "use strict";
+        let btn = document.querySelector(".btn");
+
+        btn.addEventListener("click", function timer() {
+            let i = 100;
+            setInterval(() => {
+                if (i !== 0) console.log(--i);
+            }, 1000);
+
+            this.removeEventListener("click", timer);
+        });
+    </script>
+</body>
+</html>

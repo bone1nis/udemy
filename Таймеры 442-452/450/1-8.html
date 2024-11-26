@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+        .green {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn1">Кнопка</button>
+    <p class="text1">1</p>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <button class="btn2">Кнопка</button>
+    <p class="text2">10</p>
+
+    <!--3--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">3</h2>
+
+    <input type="text" value="2" class="input3">
+
+    <!--4--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">4</h2>
+
+    <input type="text" value="2" class="input4">
+    <p class="text4"></p>
+
+    <!--5--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">5</h2>
+
+    <input type="text" value="2" class="input5">
+    <p class="text5"></p>
+    <button class="btn5">Кнопка</button>
+
+    <!--6--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">6</h2>
+
+    <p class="text6"></p>
+    <button class="btn6-1">Начать</button>
+    <button class="btn6-2">Остановиться</button>
+
+    <!--7--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">7</h2>
+
+    <p class="text7 red">Текст</p>
+
+    <!--8--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">8</h2>
+
+    <p class="text8">Время будет тут</p>
+
+
+    <script>
+        "use strict";
+        let btn1 = document.querySelector(".btn1");
+        let text1 = document.querySelector(".text1");
+
+        btn1.addEventListener("click", function startTimer1() {
+            setInterval(() => text1.textContent = +text1.textContent + 1, 1000);
+            btn1.removeEventListener("click", startTimer1);
+        });
+
+        // 2
+
+        let btn2 = document.querySelector(".btn2");
+        let text2 = document.querySelector(".text2");
+
+        btn2.addEventListener("click", function startTimer2() {
+            let timerId = setInterval(() => {
+                if (+text2.textContent !== 0) {
+                    +text2.textContent--;
+                } else {
+                    clearInterval(timerId);
+                }
+            }, 1000);
+
+            btn2.removeEventListener("click", startTimer2);
+        });
+
+        // 3
+
+        let input3 = document.querySelector(".input3");
+
+        setInterval(() => input3.value = (+input3.value) ** 2, 1000);
+
+        // 4
+
+        let input4 = document.querySelector(".input4");
+        let text4 = document.querySelector(".text4");
+
+        input4.addEventListener("blur", function () {
+
+            text4.textContent = input4.value
+
+            let timerId = setInterval(() => {
+                if (+text4.textContent !== 0) {
+                    text4.textContent = (+text4.textContent) - 1
+                } else {
+                    clearInterval(timerId);
+                }
+            }, 1000);
+        });
+
+        // 5
+
+        let input5 = document.querySelector(".input5");
+        let text5 = document.querySelector(".text5");
+        let button5 = document.querySelector(".btn5");
+
+        button5.addEventListener("click", function () {
+            text5.textContent = input5.value;
+
+            let timerId = setInterval(() => {
+                if (+text5.textContent !== 0) {
+                    text5.textContent--;
+                } else {
+                    clearInterval(timerId);
+                }
+            }, 1000);
+        });
+
+        // 6
+
+        let text6 = document.querySelector(".text6");
+        let button6Start = document.querySelector(".btn6-1");
+        let button6Stop = document.querySelector(".btn6-2");
+        let timerId6;
+
+        button6Start.addEventListener("click", startTimer6);
+
+        button6Stop.addEventListener("click", stopTimer6);
+
+        function startTimer6() {
+            timerId6 = setInterval(() => {
+                text6.textContent = (+text6.textContent) + 1;
+            }, 1000);
+
+            this.removeEventListener("click", startTimer6);
+        }
+
+        function stopTimer6() {
+            clearInterval(timerId6);
+
+            button6Start.addEventListener("click", startTimer6);
+        }
+
+        // 7
+
+        let text7 = document.querySelector(".text7");
+
+        setInterval(() => {
+            text7.classList.toggle("red");
+            text7.classList.toggle("green");
+        }, 1000);
+
+        // 8
+
+        let text8 = document.querySelector(".text8");
+
+        setInterval(() => {
+            let date = new Date();
+            let hours = "0" + date.getHours();
+            let minutes = "0" + date.getMinutes();
+            let seconds = "0" + date.getSeconds();
+            text8.textContent = `${hours.slice(-2)}:${minutes.slice(-2)}:${seconds.slice(-2)}`;
+        }, 1000);
+
+    </script>
+</body>
+</html>

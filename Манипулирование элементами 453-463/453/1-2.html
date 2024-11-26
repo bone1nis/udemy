@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol id="elem"></ol>
+
+    <!--2-->
+
+    <ol id="elem2"></ol>
+    <button id="button2">click me</button>
+
+    <script>
+        "use strict";
+         let ol1 = document.querySelector("#elem");
+         let li1 = document.createElement("li");
+
+         li1.textContent = "item";
+
+         ol1.appendChild(li1);
+
+         // 2
+
+         let ol2 = document.querySelector("#elem2");
+         let btn2 = document.querySelector("#button2");
+
+         btn2.addEventListener("click", function () {
+            let li = document.createElement("li");
+            li.textContent = "item";
+
+            ol2.appendChild(li);
+         });
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <ul class="ul2">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    
+    <input type="submit" id="button2">
+    <script>
+        "use strict";
+        let allLi = document.querySelectorAll(".ul1 li");
+
+        allLi.forEach(item => {
+            item.addEventListener("click", () => item.remove());
+        });
+
+        // 2
+
+        let btn2 = document.querySelector("#button2");
+        let ul2 = document.querySelector(".ul2");
+
+        btn2.addEventListener("click", function () {
+            if (ul2.lastElementChild) {
+                ul2.lastElementChild.remove();
+            }
+        });
+
+    </script>
+</body>
+</html>
