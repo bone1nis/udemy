@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="elem1" style="border: 1px solid red;">
+        <p>text</p>
+        <p>text</p>
+        <p>text</p>
+    </div>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <div id="elem2" style="border: 1px solid red;">
+        <p>text</p>
+        <p>text</p>
+        <p>text</p>
+    </div>
+
+    <!--3--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">3</h2>
+
+    <div id="elem3" style="border: 1px solid red;">
+        <p>text</p>
+        <p>text</p>
+        <p>text</p>
+    </div>
+
+    <script>
+        "use strict";
+        let ul = document.querySelector("#elem1");
+
+        let p = document.createElement("p");
+        p.textContent = "!!!";
+
+        ul.insertAdjacentElement("beforebegin", p);
+
+        // 2
+
+        let p2 = document.createElement("p");
+        p2.textContent = "!!!";
+
+        let ul2 = document.querySelector("#elem2");
+
+        ul2.insertAdjacentElement("afterbegin", p2);
+
+        // 3
+
+        let p3 = document.createElement("p");
+        p3.textContent = "!!!";
+
+        let ul3 = document.querySelector("#elem3");
+
+        ul3.insertAdjacentElement("beforeend", p3);
+
+
+
+    </script>
+</body>
+</html>

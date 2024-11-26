@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="table1"></table>
+    
+    <!--4--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">4</h2>
+
+    <input type="text" id="input2-width">
+    <input type="text" id="input2-height">
+    <input type="text" id="input2-text">
+
+    <button class="btn2">Генерация</button>
+
+    <script>
+        "use strict";
+        let table1 = document.querySelector("#table1");
+
+        for (let i = 0; i < 10; i++) {
+            let tr = document.createElement("tr");
+
+            for (let i = 0; i < 5; i++) {
+                let td = document.createElement("td");
+                td.textContent = "x";
+
+                tr.append(td);
+            }
+
+            table1.append(tr);
+        }
+
+        // 4
+        let inputWidth = document.querySelector("#input2-width");
+        let inputHeight = document.querySelector("#input2-height");
+        let inputText = document.querySelector("#input2-text");
+
+        let btn = document.querySelector(".btn2");
+        let body = document.querySelector("body");
+
+
+        btn.addEventListener("click", function () {
+            if ( !(inputWidth.value && inputHeight.value && inputText.value) ) {
+                alert("Вы ввели некорректное значение");
+            }
+
+            let table = document.createElement("table");
+
+            for (let i = 0; i < +inputWidth.value; i++) {
+                let tr = document.createElement("tr");
+
+                for (let i = 0; i < +inputHeight.value; i++) {
+                    let td = document.createElement("td");
+
+                    td.textContent = inputText.value;
+                    td.style.border = "1px solid black";
+
+                    tr.append(td);
+                }
+                table.append(tr);
+            }
+            body.append(table);
+        });
+        
+
+    </script>
+</body>
+</html>

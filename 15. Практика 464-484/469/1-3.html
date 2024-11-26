@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="table1"></table>
+
+    <script>
+        "use strict";
+        let employees = [
+        	{name: 'employee1', age: 30, salary: 400},
+        	{name: 'employee2', age: 31, salary: 500},
+        	{name: 'employee3', age: 32, salary: 600},
+        ];
+        let table1 = document.querySelector("#table1");
+
+        for (let user of employees) {
+            let tr = document.createElement("tr");
+
+            let td1 = document.createElement("td");
+            td1.textContent = user.name;
+            tr.append(td1);
+
+            let td2 = document.createElement("td");
+            td2.textContent = user.age;
+            td2.addEventListener("click", () => td2.textContent = +td2.textContent + 1);
+
+            tr.append(td2);
+
+            let td3 = document.createElement("td");
+            td3.textContent = user.salary;
+            td3.addEventListener("click", () => td3.textContent = +td3.textContent + (+td3.textContent * 0.1));
+            tr.append(td3);
+
+            table1.append(tr);
+        }
+    </script>
+</body>
+</html>

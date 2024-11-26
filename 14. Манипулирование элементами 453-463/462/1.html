@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" class="input">
+    <button id="btn">Кнопка</button>
+
+    <script>
+        "use strict";
+        let input = document.querySelector(".input");
+        let btn = document.querySelector("#btn");
+
+        btn.addEventListener("click", function () {
+            let clone = input.cloneNode(true);
+            this.insertAdjacentElement("afterend", clone);
+        });
+    </script>
+</body>
+</html>

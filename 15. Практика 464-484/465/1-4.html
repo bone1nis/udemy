@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="elem1"></ul>
+
+    <script>
+        "use strict";
+        let arr = [1, 2, 3, 4, 5];
+
+        let ul1 = document.querySelector("#elem1");
+
+        arr.forEach(item => {
+            let li = document.createElement("li");
+            li.textContent = item;
+
+            li.addEventListener("click", () => alert(li.textContent));
+            li.addEventListener("click", addSign);
+
+            ul1.append(li);
+        });
+
+        function addSign () {
+                this.textContent += "!";
+                this.removeEventListener("click", addSign);
+            }
+
+    </script>
+</body>
+</html>

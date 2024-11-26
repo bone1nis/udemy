@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="table1"></table>
+
+    <script>
+        "use strict";
+        let table1 = document.querySelector("#table1");
+        let j = 2;
+
+        for (let i = 0; i < 5; i++) {
+            let tr = document.createElement("tr");
+
+            for (let i = 0; i < 5; i++) {
+                let td = document.createElement("td");
+                td.textContent = j;
+
+                j += 2;
+
+                tr.append(td);
+            }
+
+            table1.append(tr);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="elem" style="border: 1px solid red;">
+        <p>text</p>
+        <p>text</p>
+        <p>text</p>
+    </div>
+
+    <script>
+        "use strict";
+        let elem = document.querySelector("#elem");
+
+        elem.insertAdjacentHTML("beforebegin", '<div class="www"><p>text</p><p>text</p><input></div>');
+    </script>
+</body>
+</html>
