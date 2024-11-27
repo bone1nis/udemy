@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+    <div id="parent">
+        <p id="elem">text</p>
+    </div>
+    <script>
+        "use strict";
+        let div = document.querySelector("#parent");
+        let text = document.querySelector("#elem");
+
+        text.addEventListener("click", function func() {
+            let input = document.createElement("input");
+
+            input.value = text.textContent;
+            input.addEventListener("blur", function () {
+                text.textContent = input.value;
+                input.remove();
+                
+                text.addEventListener("click", func);
+            });
+
+            text.textContent = "";
+            text.append(input);
+
+            text.removeEventListener("click", func);
+        });
+    </script>
+</body>
+</html>

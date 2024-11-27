@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+    <div id="parent">
+        <p><span>text1</span></p>
+        <p><span>text2</span></p>
+        <p><span>text3</span></p>
+    </div>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <div id="parent2">
+        <p>text1</p>
+        <p>text2</p>
+        <p>text3</p>
+    </div>
+
+    <script>
+        "use strict";
+        let div = document.querySelector("#parent");
+        let allText = div.querySelectorAll("p");
+
+        allText.forEach(text => {
+            let span = text.querySelector("span");
+
+            let a = document.createElement("a");
+            a.href = "";
+            a.textContent = "Удалить";
+
+            text.append(a);
+
+            a.addEventListener("click", function (event) {
+                text.remove();
+                event.preventDefault();
+            });
+
+            span.addEventListener("click", function edit() {
+                let input = document.createElement("input");
+                input.value = span.textContent;
+
+                span.textContent = "";
+                span.append(input);
+
+                input.addEventListener("blur", function () {
+                    span.textContent = input.value;
+                    this.remove();
+                    span.addEventListener("click", edit);
+                });
+
+                span.removeEventListener("click", edit);
+            });
+        });
+
+        // 2
+
+        let div2 = document.querySelector("#parent2");
+        let text2 = div2.querySelectorAll("p");
+
+        text2.forEach(text => {
+            let span = document.createElement("span");
+            let a = document.createElement("a");
+
+            a.href = "";
+            a.textContent = "Удалить";
+
+            span.textContent = text.textContent;
+            text.textContent = "";
+
+            text.append(span);
+            text.append(a);
+
+            span.addEventListener("click", function edit() {
+                let input = document.createElement("input");
+                input.value = span.textContent;
+
+                span.textContent = "";
+                span.append(input);
+
+                input.addEventListener("blur", function () {
+                    span.textContent = input.value;
+                    this.remove();
+                    span.addEventListener("click", edit);
+                });
+
+                span.removeEventListener("click", edit);
+            });
+
+            a.addEventListener("click", function (event) {
+                text.remove();
+                event.preventDefault();
+            });
+
+
+        });
+
+    </script>
+</body>
+</html>

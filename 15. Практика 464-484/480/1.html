@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <p id="elem">text</p>
+    <input type="submit" id="btn">
+
+    <script>
+        "use strict";
+        let btn = document.querySelector("#btn");
+        let text = document.querySelector("#elem");
+
+        btn.addEventListener("click", () => text.classList.toggle("hidden"));
+    </script>
+</body>
+</html>

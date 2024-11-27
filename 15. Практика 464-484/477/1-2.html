@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+    <ul>
+        <li>Текст</li>
+        <li>Текст</li>
+        <li>Текст</li>
+        <li>Текст</li>
+    </ul>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <table>
+        <tr>
+            <td>Ячейка</td>
+            <td>Ячейка</td>
+            <td>Ячейка</td>
+        </tr>
+        <tr>
+            <td>Ячейка</td>
+            <td>Ячейка</td>
+            <td>Ячейка</td>
+        </tr>
+    </table>
+    <script>
+        "use strict";
+        let ul = document.querySelector("ul");
+        let allLi = ul.querySelectorAll("li");
+
+        for (let li of allLi) {
+            li.addEventListener("click", function func() {
+                let input = document.createElement("input");
+                input.value = li.textContent;
+                
+
+                input.addEventListener("blur", function () {
+                    li.textContent = this.value;
+                    li.addEventListener("click", func);
+                });
+
+                li.textContent = "";
+                li.append(input);
+
+                li.removeEventListener("click", func);
+            });
+        }
+
+        // 2
+
+        let table = document.querySelector("table");
+        let allTd = table.querySelectorAll("td");
+
+        for (let td of allTd) {
+            td.addEventListener("click", function edit() {
+                let input = document.createElement("input");
+                input.value = td.textContent;
+
+                td.textContent = "";
+                td.append(input);
+
+                input.addEventListener("blur", function () {
+                    td.textContent = input.value;
+                    td.addEventListener("click", edit);
+                });
+
+                td.removeEventListener("click", edit);
+            });
+        }
+    </script>
+</body>
+</html>

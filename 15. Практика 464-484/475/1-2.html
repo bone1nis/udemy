@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+    <div id="parent">
+        <p id="elem">text</p>
+        <input id="input">
+    </div>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <div id="parent2">
+        <p id="elem2">text</p>
+    </div>
+    <script>
+        "use strict";
+        let elem = document.querySelector('#elem');
+        let input = document.querySelector('#input');
+
+        input.value = elem.textContent;
+
+        input.addEventListener("input", function () {
+            elem.textContent = this.value;
+        });
+
+        // 2
+        let div = document.querySelector("#parent2");
+        let text2 = div.querySelector("#elem2");
+
+        text2.addEventListener("click", function () {
+            let input = document.createElement("input");
+
+            input.value = text2.textContent;
+
+            input.addEventListener("blur", function () {
+                text2.textContent = input.value;
+                this.remove();
+            });
+
+            div.append(input);
+        });
+    </script>
+</body>
+</html>

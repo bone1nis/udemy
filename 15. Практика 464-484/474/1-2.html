@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+    <ul>
+        <li>Текст</li>
+        <li>Текст</li>
+        <li>Текст</li>
+    </ul>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <table>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+    </table>
+    <script>
+        "use strict";
+        let parent = document.querySelector("ul");
+        let allLi = parent.querySelectorAll("li");
+
+        for (let li of allLi) {
+            let remove = document.createElement("a");
+            remove.href = "";
+            remove.textContent = "remove";
+
+            remove.addEventListener("click", function (event) {
+                li.remove();
+                event.preventDefault();
+            });
+
+            li.append(remove);
+        }
+
+        // 2
+
+        let table = document.querySelector("table");
+        let allTr = table.querySelectorAll("tr");
+
+        allTr.forEach(item => {
+            let td = document.createElement("td");
+            let a = document.createElement("a");
+            a.textContent = "Удалить";
+            a.href = "";
+
+            a.addEventListener("click", (event) => {
+                item.remove();
+                event.preventDefault();
+            });
+            td.append(a);
+
+            item.append(td);
+        });
+    </script>
+</body>
+</html>

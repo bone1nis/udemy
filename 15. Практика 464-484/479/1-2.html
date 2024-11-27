@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+    <style>
+        .crossedOut {
+            text-decoration: line-through;
+        }
+        .green {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <p>text1</p>
+    <p>text2</p>
+    <p>text3</p>
+
+    <!--2--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">2</h2>
+
+    <table>
+        <tr>
+            <td>Текст</td>
+            <td>Текст</td>
+            <td>Текст</td>
+        </tr>
+        <tr>
+            <td>Текст</td>
+            <td>Текст</td>
+            <td>Текст</td>
+        </tr>
+    </table>
+
+    <script>
+        "use strict";
+        let allText = document.querySelectorAll("p");
+
+        allText.forEach(item => {
+            let span = document.createElement("span");
+            let a = document.createElement("a");
+
+            span.textContent = item.textContent;
+            item.textContent = "";
+
+            a.textContent = "Нажмите, чтобы перечеркнуть";
+            a.href = "";
+
+            item.append(span);
+            item.append(a);
+
+            a.addEventListener("click", function (event) {
+                span.classList.add("crossedOut");
+                event.preventDefault();
+                a.remove();
+            });
+        });
+
+        // 2
+
+        let table = document.querySelector("table");
+        let allTr = table.querySelectorAll("tr");
+
+        allTr.forEach(tr => {
+            let td = document.createElement("td");
+            let a = document.createElement("a");
+
+            a.href = "";
+            a.textContent = "Покрасить/Убрать ряд";
+
+            td.append(a);
+            tr.append(td);
+
+            a.addEventListener("click", function (event) {
+                tr.classList.toggle("green");
+                event.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>

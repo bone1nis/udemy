@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>Ячейка</li>
+        <li>Ячейка</li>
+        <li>Ячейка</li>
+        <li>Ячейка</li>
+    </ul>
+    <script>
+        "use strict";
+        let ul = document.querySelector("ul");
+        ul.addEventListener("click", function (event) {
+            if ( event.target.matches("li") ) {
+                event.target.classList.toggle("red");
+            }
+        });
+    </script>
+</body>
+</html>

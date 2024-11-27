@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+    <table id="table1"></table>
+    <button id="button1">Кнопка</button>
+
+    <!--2-->
+
+    <table id="table2"></table>
+    <button id="button2">Кнопка</button>
+    <script>
+        "use strict";
+        let table1 = document.querySelector("#table1");
+        let btn1 = document.querySelector("#button1");
+
+
+        btn1.addEventListener("click", function () {
+            let tr = document.createElement("tr");
+            table1.append("tr");
+        });
+
+        // 2
+
+        let table2 = document.querySelector("#table2");
+        let btn2 = document.querySelector("#button2");
+
+        btn2.addEventListener("click", function () {
+            let tr = document.createElement("tr");
+            table2.append(tr);
+
+            let trs = document.querySelectorAll("#table2 tr");
+            trs.forEach(item => {
+                let td = document.createElement("td");
+                td.textContent = "Текст";
+
+                item.append(td);
+            });
+        });
+
+
+    </script>
+</body>
+</html>
