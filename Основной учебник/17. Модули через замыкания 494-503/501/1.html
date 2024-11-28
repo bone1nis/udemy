@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+    <button>Кнопка</button>
+    <input type="text" class="input1">
+    <input type="text" class="input2">
+    <input type="text" class="input3">
+
+    <script>
+        "use strict";
+        ;(function() {
+        	let str1 = 'переменная модуля';
+        	let str2 = 'переменная модуля';
+        	let str3 = 'переменная модуля';
+        
+        	function func1() {
+        		alert('функция модуля');
+        	}
+        	function func2() {
+        		alert('функция модуля');
+        	}
+        	function func3() {
+        		alert('функция модуля');
+        	}
+
+            window.str1 = str1;
+            window.func2 = func2;
+            window.func3 = func3;
+        })();
+
+        alert (str1);
+    </script>
+</body>
+</html>

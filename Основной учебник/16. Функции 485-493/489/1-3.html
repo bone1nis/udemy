@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+    <p id="elem1"></p>
+    <p id="elem2"></p>
+
+    <!--3-->
+
+    <input type="text">
+    <script>
+        "use strict";
+        let p = document.querySelector("p");
+        appendText(p, "куывпывп");
+        function appendText(elem, text) {
+            elem.textContent += text;
+        }
+
+        // 2
+
+        let allP = document.querySelectorAll("p");
+
+        for (let p of allP) {
+            appendText(p, "текст");
+        }
+
+        // 3
+        let input = document.querySelector("input");
+
+        setValue(input, "ывагшртыва");
+
+        function setValue(elem, text) {
+            if ( !(elem.matches("input")) ) {
+                return alert("Эт не инпут");
+            }
+            elem.value = text;
+        }
+    </script>
+</body>
+</html>

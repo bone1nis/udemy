@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+
+    <script>
+        "use strict";
+        ;(function() {
+            function avg1(arr) {
+            	return sum(arr, 1) / arr.length;
+            }
+
+            function avg2(arr) {
+            	return sum(arr, 2) / arr.length;
+            }
+
+            function avg3(arr) {
+            	return sum(arr, 3) / arr.length;
+            }
+
+            // вспомогательная функция
+            function sum(arr, pow) {
+            	let res = 0;
+            
+            	for (let elem of arr) {
+            		res += elem ** pow;
+            	}
+            
+            	return res;
+            }
+
+            window.avg = {avg1, avg2, avg3};
+        })();
+
+        alert (avg.avg1([1, 2]));
+    </script>
+</body>
+</html>

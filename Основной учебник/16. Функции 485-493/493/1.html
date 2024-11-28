@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+    <div id="elem">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+    </div>
+
+    <script>
+        "use strict";
+
+        let div = document.querySelector("#elem");
+
+        let arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+        let table = createTable(arr);
+
+        div.appendChild(table);
+
+
+
+        function createTable(arr) {
+        	let table = document.createElement('table');
+
+            arr.forEach(subArr => {
+                let tr = document.createElement("tr");
+
+                subArr.forEach(elem => {
+                    let td = document.createElement("td");
+                    td.textContent = elem;
+
+                    tr.appendChild(td);
+                });
+
+                table.appendChild(tr);
+            });
+
+            return table;
+        }
+    </script>
+</body>
+</html>

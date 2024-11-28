@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+    <div id="elem">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+    </div>
+
+    <script>
+        "use strict";
+
+        let div = document.querySelector("#elem");
+        let table = createTable(3, 5);
+        
+        div.appendChild(table);
+
+        function createTable(rows, cols) {
+        	let table = document.createElement('table');
+        
+        	for (let i = 0; i < rows; i++) {
+                let tr = document.createElement("tr");
+
+        		for (let j = 0; j < cols; j++) {
+                    let td = document.createElement("td");
+
+                    td.textContent = "Ячейка";
+                    tr.appendChild(td);
+        		}
+
+                table.appendChild(tr);
+        	}
+        
+        	return table;
+        }
+    </script>
+</body>
+</html>

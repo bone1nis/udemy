@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+    <p id="elem1"></p>
+    <p id="elem2"></p>
+
+    <!--2-->
+
+    <div class="div2">
+        <ul>
+        </ul>
+    </div>
+
+    <!--3-->
+
+    <div class="div3">
+        <ul>
+        </ul>
+    </div>
+
+    <script>
+        "use strict";
+
+        let allText = document.querySelectorAll("p");
+
+        appendText(allText, "ыва");
+        
+        function appendText(elems, text) {
+            elems.forEach(elem => elem.textContent += text);
+        }
+
+        // 2
+
+        let div2 = document.querySelector(".div2");
+
+        appendElem(div2, "привет");
+
+        function appendElem (elem, text) {
+            let ul = elem.querySelector("ul");
+
+            let li = document.createElement("li");
+            li.textContent = text;
+
+            ul.append(li);
+        }
+
+        // 3
+
+        let div3 = document.querySelector(".div3");
+        let arr = [1, 2, 3, 4, 5];
+
+        arr.forEach(item => appendElem(div3, item));
+    </script>
+</body>
+</html>

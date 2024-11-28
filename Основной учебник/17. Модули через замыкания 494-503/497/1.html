@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+</head>
+<body>
+    <button>Кнопка</button>
+    <input type="text" class="input1">
+    <input type="text" class="input2">
+    <input type="text" class="input3">
+
+    <script>
+        "use strict";
+        ;(function (buttonSelector, input1Selector, input2Selector, input3Selector){
+            let btn = document.querySelector(buttonSelector);
+            let input1 = document.querySelector(input1Selector);
+            let input2 = document.querySelector(input2Selector);
+            let input3 = document.querySelector(input3Selector);
+
+            btn.addEventListener("click", function () {
+                console.log((+input1.value) + (+input2.value) + (+input3.value));
+            });
+        })("button", ".input1", ".input2", ".input3");
+    </script>
+</body>
+</html>
