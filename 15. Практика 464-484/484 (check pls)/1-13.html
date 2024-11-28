@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="магазин, онлайн магазин, торт, пирожное">
+    <meta name="description" content="Кондитерская №1. Торты и пирожные на любой вкус.">
+    <title>Кондитерская</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .crossOut {
+            text-decoration: line-through;
+        }
+        .link {
+            text-decoration: none;
+            color: dimgrey;
+            padding-left: 10px;
+        }
+        .active {
+            color: rgb(61, 60, 60);
+            font-weight: bold;
+        }
+        .padding-5 {
+            padding: 0 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!--1-5--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">1-5</h2>
+
+    <button class="btn1">Вывести элементы массива</button>
+
+    <!--6-9--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">6-9</h2>
+
+    <button class="btn6">Вывести работников в таблицу</button>
+
+    <!--10-13--> <div style="border: 1px solid black; margin-top: 10px; margin-bottom: 10px;"></div> <h2 style="text-align: center;">10-13</h2>
+
+    <button class="btn10">Вывести работников в списке</button>
+
+    <script>
+        "use strict";
+        let arr1 = [1, 2, 3, 4, 5];
+        let btn1 = document.querySelector(".btn1");
+
+        btn1.addEventListener("click", function showElements() {
+            let ul = document.createElement("ul");
+            let inputAdd = document.createElement("input");
+
+            btn1.insertAdjacentElement("afterend", ul);
+            ul.insertAdjacentElement("afterend", inputAdd);
+
+            arr1.forEach(item => {
+                let span = document.createElement("span");
+                let li = document.createElement("li");
+
+                span.textContent = item;
+
+                li.append(span);
+                ul.append(li);
+
+                span.addEventListener("click", addEdit);
+
+                addRemove(li);
+                addCrossOut(li);
+            });
+
+            inputAdd.addEventListener("blur", function () {
+                let li = document.createElement("li");
+                let span = document.createElement("span");
+
+                span.textContent = inputAdd.value;
+                span.addEventListener("click", addEdit);
+                inputAdd.value = "";
+
+                li.append(span);
+                ul.append(li);
+
+                addRemove(li);
+                addCrossOut(li);
+            });
+
+            btn1.removeEventListener("click", showElements);
+
+            function addEdit () {
+                let input = document.createElement("input");
+                let elem = this;
+                            
+                input.value = this.textContent;
+                this.textContent = "";
+
+                this.append(input);
+                this.removeEventListener("click", addEdit);
+                            
+                input.addEventListener("blur", function () {
+                    elem.textContent = input.value;
+                    input.remove();
+                    elem.addEventListener("click", addEdit);
+                });
+            }
+
+            function addRemove (elem) {
+                let a = document.createElement("a");
+
+                a.textContent = "Удалить";
+                a.href = "#";
+                a.classList.add("link");
+
+                elem.append(a);
+
+                a.addEventListener("click", function (event) {
+                    elem.remove();
+                    event.preventDefault();
+                });
+            }
+
+            function addCrossOut (elem) {
+                let a = document.createElement("a");
+
+                a.textContent = "Перечеркнуть";
+                a.href = "#";
+                a.classList.add("link");
+
+                elem.append(a);
+
+                a.addEventListener("click", function (event) {
+                    let span = elem.querySelector("span");
+
+                    span.classList.toggle("crossOut");
+                    a.classList.toggle("active");
+                });
+            }
+        });
+
+
+
+
+        // 6-9
+
+
+
+
+
+
+        let employees = [
+        	{name: 'employee1', age: 30, salary: 400},
+        	{name: 'employee2', age: 31, salary: 500},
+        	{name: 'employee3', age: 32, salary: 600},
+        ];
+        let btn6 = document.querySelector(".btn6");
+
+        btn6.addEventListener("click", function showElements() {
+            let table = document.createElement("table");
+
+            let inputAddName = document.createElement("input");
+            let inputAddAge = document.createElement("input");
+            let inputAddSalary = document.createElement("input");
+            let btnAddWorker = document.createElement("button");
+
+            inputAddName.placeholder = "Имя";
+            inputAddAge.placeholder = "Возраст";
+            inputAddSalary.placeholder = "Зарплата";
+            btnAddWorker.textContent = "Отправить";
+
+            employees.forEach(item => {
+                let tr = document.createElement("tr");
+                
+                let name = document.createElement("td");
+                name.textContent = item.name;
+                name.addEventListener("click", addEdit)
+                tr.append(name);
+
+                let age = document.createElement("td");
+                age.textContent = item.age;
+                age.addEventListener("click", addEdit);
+                tr.append(age);
+
+                let salary = document.createElement("td");
+                salary.textContent = item.salary;
+                salary.addEventListener("click", addEdit);
+                tr.append(salary);
+
+                addRemove(tr);
+                table.append(tr);
+            });
+            
+            btn6.insertAdjacentElement("afterend", table);
+
+            table.insertAdjacentElement("afterend", btnAddWorker);
+            table.insertAdjacentElement("afterend", inputAddSalary);
+            table.insertAdjacentElement("afterend", inputAddAge);
+            table.insertAdjacentElement("afterend", inputAddName);
+
+            btn6.removeEventListener("click", showElements);
+
+            btnAddWorker.addEventListener("click", function () {
+                if ( !(inputAddAge.value && inputAddSalary.value &&  inputAddName.value) ) {
+                    alert("Ошибка! Вы ввели не все значения");
+                } else {
+
+                    let tr = document.createElement("tr");
+
+                    let name = document.createElement("td");
+                    name.textContent = inputAddName.value;
+                    name.addEventListener("click", addEdit);
+                    tr.append(name);
+
+                    let age = document.createElement("td");
+                    age.textContent = inputAddAge.value;
+                    age.addEventListener("click", addEdit);
+                    tr.append(age);
+
+                    let salary = document.createElement("td");
+                    salary.textContent = inputAddSalary.value;
+                    salary.addEventListener("click", addEdit);
+                    tr.append(salary);
+
+                    addRemove(tr);
+
+                    table.append(tr);
+                }
+            });
+
+            function addEdit () {
+                let input = document.createElement("input");
+                let elem = this;
+                
+                input.value = this.textContent;
+                this.textContent = "";
+
+                this.append(input);
+                this.removeEventListener("click", addEdit);
+
+                input.addEventListener("blur", function () {
+                    elem.textContent = input.value;
+
+                    input.remove();
+                    elem.addEventListener("click", addEdit);
+                });
+            }
+
+            function addRemove (elem) {
+                let td = document.createElement("td");
+                let a = document.createElement("a");
+
+                a.textContent = "Удалить";
+                a.href = "#";
+                a.classList.add("link");
+
+                a.addEventListener("click", function (event) {
+                    elem.remove();
+                    event.preventDefault();
+                });
+
+                td.append(a);
+                elem.append(td);
+            }
+        });
+
+
+
+
+        // 10-13
+
+
+        let employees10 = [
+        	{name: 'employee1', age: 30, salary: 400},
+        	{name: 'employee2', age: 31, salary: 500},
+        	{name: 'employee3', age: 32, salary: 600},
+        ];
+        let btn10 = document.querySelector(".btn10");
+
+        btn10.addEventListener("click", function showElements() {
+            let ul = document.createElement("ul");
+
+            let inputAddName = document.createElement("input");
+            let inputAddAge = document.createElement("input");
+            let inputAddSalary = document.createElement("input");
+            let btnAddWorker = document.createElement("button");
+
+            inputAddName.placeholder = "Имя";
+            inputAddAge.placeholder = "Возраст";
+            inputAddSalary.placeholder = "Зарплата";
+            btnAddWorker.textContent = "Отправить";
+
+            employees10.forEach(item => {
+                let li = document.createElement("li");
+
+                let name = document.createElement("span");
+                name.textContent = item.name;
+                name.classList.add("padding-5")
+                name.addEventListener("click", addEdit);
+                li.append(name);
+
+                let age = document.createElement("span");
+                age.textContent = item.age;
+                age.classList.add("padding-5")
+                age.addEventListener("click", addEdit);
+                li.append(age);
+
+                let salary = document.createElement("span");
+                salary.textContent = item.salary;
+                salary.classList.add("padding-5")
+                salary.addEventListener("click", addEdit);
+                li.append(salary);
+
+                addRemove(li);
+                ul.append(li);
+            });
+
+            btn10.insertAdjacentElement("afterend", ul);
+
+            ul.insertAdjacentElement("afterend", btnAddWorker);
+            ul.insertAdjacentElement("afterend", inputAddSalary);
+            ul.insertAdjacentElement("afterend", inputAddAge);
+            ul.insertAdjacentElement("afterend", inputAddName);
+
+            btn10.removeEventListener("click", showElements);
+
+            btnAddWorker.addEventListener("click", function () {
+                if ( !(inputAddAge.value && inputAddName.value &&  inputAddSalary.value) ) {
+                    alert("Ошибка! Вы ввели не все значения");
+                } else {
+
+                    let li = document.createElement("li");
+
+                    let name = document.createElement("span");
+                    name.textContent = inputAddName.value;
+                    name.classList.add("padding-5")
+                    name.addEventListener("click", addEdit);
+                    li.append(name);
+
+                    let age = document.createElement("span");
+                    age.textContent = inputAddAge.value;
+                    age.classList.add("padding-5")
+                    age.addEventListener("click", addEdit);
+                    li.append(age);
+
+                    let salary = document.createElement("span");
+                    salary.textContent = inputAddSalary.value;
+                    salary.classList.add("padding-5")
+                    salary.addEventListener("click", addEdit);
+                    li.append(salary);
+
+                    addRemove(li);
+
+                    ul.append(li);
+                }
+            });
+
+            function addEdit () {
+                let input = document.createElement("input");
+                let elem = this;
+
+                input.value = this.textContent;
+                this.textContent = "";
+
+                this.append(input);
+
+                this.removeEventListener("click", addEdit);
+
+                input.addEventListener("blur", function () {
+                    elem.textContent = input.value;
+                    input.remove();
+                    
+                    elem.addEventListener("click", addEdit);
+                });
+            }
+
+            function addRemove (elem) {
+                let a = document.createElement("a");
+
+                a.textContent = "Удалить";
+                a.href = "#";
+                a.classList.add("link");
+
+                a.addEventListener("click", function (event) {
+                    elem.remove();
+                    event.preventDefault();
+                });
+
+                elem.append(a);
+            }
+        });
+
+
+
+
+    </script>
+</body>
+</html>
