@@ -25,6 +25,9 @@
         .padding-5 {
             padding: 0 5px;
         }
+        .error {
+            border: 2px solid red;
+        }
     </style>
 </head>
 <body>
@@ -69,53 +72,26 @@
             });
 
             inputAdd.addEventListener("blur", function () {
-                let li = document.createElement("li");
-                let span = document.createElement("span");
 
-                span.textContent = inputAdd.value;
-                span.addEventListener("click", addEdit);
-                inputAdd.value = "";
+                if (validateInput(inputAdd)) { 
+                    let li = document.createElement("li");
+                    let span = document.createElement("span");
 
-                li.append(span);
-                ul.append(li);
+                    span.textContent = inputAdd.value;
+                    span.addEventListener("click", addEdit);
+                    inputAdd.value = "";
 
-                addRemove(li);
-                addCrossOut(li);
+                    li.append(span);
+                    ul.append(li);
+
+                    addRemove(li);
+                    addCrossOut(li);
+                } else { 
+                    alert("Поле не может быть пустым"); 
+                }
             });
 
             btn1.removeEventListener("click", showElements);
-
-            function addEdit () {
-                let input = document.createElement("input");
-                let elem = this;
-                            
-                input.value = this.textContent;
-                this.textContent = "";
-
-                this.append(input);
-                this.removeEventListener("click", addEdit);
-                            
-                input.addEventListener("blur", function () {
-                    elem.textContent = input.value;
-                    input.remove();
-                    elem.addEventListener("click", addEdit);
-                });
-            }
-
-            function addRemove (elem) {
-                let a = document.createElement("a");
-
-                a.textContent = "Удалить";
-                a.href = "#";
-                a.classList.add("link");
-
-                elem.append(a);
-
-                a.addEventListener("click", function (event) {
-                    elem.remove();
-                    event.preventDefault();
-                });
-            }
 
             function addCrossOut (elem) {
                 let a = document.createElement("a");
@@ -197,9 +173,7 @@
             btn6.removeEventListener("click", showElements);
 
             btnAddWorker.addEventListener("click", function () {
-                if ( !(inputAddAge.value && inputAddSalary.value &&  inputAddName.value) ) {
-                    alert("Ошибка! Вы ввели не все значения");
-                } else {
+                if ( validateInputs(inputAddAge, inputAddName, inputAddSalary)) {
 
                     let tr = document.createElement("tr");
 
@@ -223,41 +197,6 @@
                     table.append(tr);
                 }
             });
-
-            function addEdit () {
-                let input = document.createElement("input");
-                let elem = this;
-                
-                input.value = this.textContent;
-                this.textContent = "";
-
-                this.append(input);
-                this.removeEventListener("click", addEdit);
-
-                input.addEventListener("blur", function () {
-                    elem.textContent = input.value;
-
-                    input.remove();
-                    elem.addEventListener("click", addEdit);
-                });
-            }
-
-            function addRemove (elem) {
-                let td = document.createElement("td");
-                let a = document.createElement("a");
-
-                a.textContent = "Удалить";
-                a.href = "#";
-                a.classList.add("link");
-
-                a.addEventListener("click", function (event) {
-                    elem.remove();
-                    event.preventDefault();
-                });
-
-                td.append(a);
-                elem.append(td);
-            }
         });
 
 
@@ -321,9 +260,7 @@
             btn10.removeEventListener("click", showElements);
 
             btnAddWorker.addEventListener("click", function () {
-                if ( !(inputAddAge.value && inputAddName.value &&  inputAddSalary.value) ) {
-                    alert("Ошибка! Вы ввели не все значения");
-                } else {
+                if ( validateInputs(inputAddAge, inputAddName, inputAddSalary)) {
 
                     let li = document.createElement("li");
 
@@ -350,42 +287,53 @@
                     ul.append(li);
                 }
             });
+        });
 
-            function addEdit () {
-                let input = document.createElement("input");
-                let elem = this;
+        function addEdit () {
+            let input = document.createElement("input");
+            let elem = this;
+                        
+            input.value = this.textContent;
+            this.textContent = "";
+            this.append(input);
+            this.removeEventListener("click", addEdit);
+                        
+            input.addEventListener("blur", function () {
+                elem.textContent = input.value;
+                input.remove();
+                elem.addEventListener("click", addEdit);
+            });
+        }
 
-                input.value = this.textContent;
-                this.textContent = "";
-
-                this.append(input);
-
-                this.removeEventListener("click", addEdit);
-
-                input.addEventListener("blur", function () {
-                    elem.textContent = input.value;
-                    input.remove();
-                    
-                    elem.addEventListener("click", addEdit);
-                });
-            }
-
-            function addRemove (elem) {
+        function addRemove (elem) {
                 let a = document.createElement("a");
 
                 a.textContent = "Удалить";
                 a.href = "#";
                 a.classList.add("link");
 
+                elem.append(a);
+
                 a.addEventListener("click", function (event) {
                     elem.remove();
                     event.preventDefault();
                 });
+        }
 
-                elem.append(a);
-            }
-        });
+    function validateInput(input) {
+        if (!input.value.trim()) {
+            input.classList.add("error");
+            return false;
+        }
+        input.classList.remove("error");
+        return true;
+    }
 
+    function validateInputs(...args) {
+        let results = ( args.map(item => validateInput(item)) );
+        if (results.includes(false)) alert("Поле не может быть пустым");
+        return !( results.includes(false) );
+    }
 
 
 
