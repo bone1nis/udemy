@@ -46,72 +46,85 @@
 
     <script>
         "use strict";
+
+        class ContainerManager {
+
+            constructor (buttonSelector, containerSelector, items, renderFunction, ...addItems) {
+                this.button = document.querySelector(buttonSelector);
+                this.containerSelector = containerSelector;
+                this.items = items;
+                this.renderFunction = renderFunction;
+                this.addItems = addItems;
+
+                this._showElementsBound = this.showElements.bind(this);
+                this.container = document.createElement(this.containerSelector);
+            }
+
+            init () {
+                this.button.addEventListener("click", this._showElementsBound);
+            }
+            
+            showElements () {
+                this.items.forEach(item => {
+                    let elem = this.renderFunction(item);
+                    this.container.append(elem);
+                });
+
+                this.button.insertAdjacentElement("afterend", this.container);
+                this.button.removeEventListener("click", this._showElementsBound);
+
+                this.addElement();
+            }
+
+            addElement () {
+                let elems = this.addItems;
+
+                elems.forEach(elem => this.container.insertAdjacentElement("afterend", elem));
+            }
+        }
+
         let arr1 = [1, 2, 3, 4, 5];
-        let btn1 = document.querySelector(".btn1");
 
-        btn1.addEventListener("click", function showElements() {
-            let ul = document.createElement("ul");
-            let inputAdd = document.createElement("input");
+        let inputAdd = document.createElement("input");
 
-            btn1.insertAdjacentElement("afterend", ul);
-            ul.insertAdjacentElement("afterend", inputAdd);
-
-            arr1.forEach(item => {
-                let span = document.createElement("span");
+        inputAdd.addEventListener("blur", function () {
+        
+            if (validateInput(inputAdd)) { 
                 let li = document.createElement("li");
-
-                span.textContent = item;
-
-                li.append(span);
-                ul.append(li);
-
+                let span = document.createElement("span");
+            
+                span.textContent = inputAdd.value;
                 span.addEventListener("click", addEdit);
-
+                inputAdd.value = "";
+            
+                li.append(span);
+                newContainer1.container.append(li);
+            
                 addRemove(li);
                 addCrossOut(li);
-            });
-
-            inputAdd.addEventListener("blur", function () {
-
-                if (validateInput(inputAdd)) { 
-                    let li = document.createElement("li");
-                    let span = document.createElement("span");
-
-                    span.textContent = inputAdd.value;
-                    span.addEventListener("click", addEdit);
-                    inputAdd.value = "";
-
-                    li.append(span);
-                    ul.append(li);
-
-                    addRemove(li);
-                    addCrossOut(li);
-                } else { 
-                    alert("Поле не может быть пустым"); 
-                }
-            });
-
-            btn1.removeEventListener("click", showElements);
-
-            function addCrossOut (elem) {
-                let a = document.createElement("a");
-
-                a.textContent = "Перечеркнуть";
-                a.href = "#";
-                a.classList.add("link");
-
-                elem.append(a);
-
-                a.addEventListener("click", function (event) {
-                    let span = elem.querySelector("span");
-
-                    span.classList.toggle("crossOut");
-                    a.classList.toggle("active");
-                });
+            } else { 
+                alert("Поле не может быть пустым"); 
             }
         });
 
 
+        const newContainer1 = new ContainerManager (".btn1", "ul", arr1, item => {
+            let span = document.createElement("span");
+            let li = document.createElement("li");
+
+            span.textContent = item;
+
+            li.append(span);
+
+            span.addEventListener("click", addEdit);
+
+            addRemove(li);
+            addCrossOut(li);
+
+            return li;
+        }, inputAdd);
+
+        newContainer1.init();
 
 
         // 6-9
@@ -126,78 +139,64 @@
         	{name: 'employee2', age: 31, salary: 500},
         	{name: 'employee3', age: 32, salary: 600},
         ];
-        let btn6 = document.querySelector(".btn6");
 
-        btn6.addEventListener("click", function showElements() {
-            let table = document.createElement("table");
+        let inputAddName = document.createElement("input");
+        let inputAddAge = document.createElement("input");
+        let inputAddSalary = document.createElement("input");
+        let btnAddWorker = document.createElement("button");
 
-            let inputAddName = document.createElement("input");
-            let inputAddAge = document.createElement("input");
-            let inputAddSalary = document.createElement("input");
-            let btnAddWorker = document.createElement("button");
+        inputAddName.placeholder = "Имя";
+        inputAddAge.placeholder = "Возраст";
+        inputAddSalary.placeholder = "Зарплата";
+        btnAddWorker.textContent = "Отправить";
+        
+        btnAddWorker.addEventListener("click", function () {
+            if ( validateInputs(inputAddAge, inputAddName, inputAddSalary)) {
 
-            inputAddName.placeholder = "Имя";
-            inputAddAge.placeholder = "Возраст";
-            inputAddSalary.placeholder = "Зарплата";
-            btnAddWorker.textContent = "Отправить";
+                 let tr = document.createElement("tr");
+                 let name = document.createElement("td");
+                 name.textContent = inputAddName.value;
+                 name.addEventListener("click", addEdit);
+                 tr.append(name);
 
-            employees.forEach(item => {
-                let tr = document.createElement("tr");
-                
-                let name = document.createElement("td");
-                name.textContent = item.name;
-                name.addEventListener("click", addEdit)
-                tr.append(name);
+                 let age = document.createElement("td");
+                 age.textContent = inputAddAge.value;
+                 age.addEventListener("click", addEdit);
+                 tr.append(age);
 
-                let age = document.createElement("td");
-                age.textContent = item.age;
-                age.addEventListener("click", addEdit);
-                tr.append(age);
+                 let salary = document.createElement("td");
+                 salary.textContent = inputAddSalary.value;
+                 salary.addEventListener("click", addEdit);
+                 tr.append(salary);
 
-                let salary = document.createElement("td");
-                salary.textContent = item.salary;
-                salary.addEventListener("click", addEdit);
-                tr.append(salary);
-
-                addRemove(tr);
-                table.append(tr);
-            });
-            
-            btn6.insertAdjacentElement("afterend", table);
-
-            table.insertAdjacentElement("afterend", btnAddWorker);
-            table.insertAdjacentElement("afterend", inputAddSalary);
-            table.insertAdjacentElement("afterend", inputAddAge);
-            table.insertAdjacentElement("afterend", inputAddName);
-
-            btn6.removeEventListener("click", showElements);
-
-            btnAddWorker.addEventListener("click", function () {
-                if ( validateInputs(inputAddAge, inputAddName, inputAddSalary)) {
-
-                    let tr = document.createElement("tr");
-
-                    let name = document.createElement("td");
-                    name.textContent = inputAddName.value;
-                    name.addEventListener("click", addEdit);
-                    tr.append(name);
-
-                    let age = document.createElement("td");
-                    age.textContent = inputAddAge.value;
-                    age.addEventListener("click", addEdit);
-                    tr.append(age);
-
-                    let salary = document.createElement("td");
-                    salary.textContent = inputAddSalary.value;
-                    salary.addEventListener("click", addEdit);
-                    tr.append(salary);
-
-                    addRemove(tr);
-
-                    table.append(tr);
-                }
-            });
+                 addRemove(tr);
+                 newContainer2.container.append(tr);
+            }
         });
+
+        const newContainer2 = new ContainerManager(".btn6", "table", employees, item => {
+            let tr = document.createElement("tr");
+                
+            let name = document.createElement("td");
+            name.textContent = item.name;
+            name.addEventListener("click", addEdit)
+            tr.append(name);
+
+            let age = document.createElement("td");
+            age.textContent = item.age;
+            age.addEventListener("click", addEdit);
+            tr.append(age);
+
+            let salary = document.createElement("td");
+            salary.textContent = item.salary;
+            salary.addEventListener("click", addEdit);
+            tr.append(salary);
+            addRemove(tr);
+
+            return tr;
+        }, btnAddWorker, inputAddSalary, inputAddAge, inputAddName);
+
+        newContainer2.init();
 
 
 
@@ -210,84 +209,73 @@
         	{name: 'employee2', age: 31, salary: 500},
         	{name: 'employee3', age: 32, salary: 600},
         ];
-        let btn10 = document.querySelector(".btn10");
 
-        btn10.addEventListener("click", function showElements() {
-            let ul = document.createElement("ul");
+        let inputAddName10 = document.createElement("input");
+        let inputAddAge10 = document.createElement("input");
+        let inputAddSalary10 = document.createElement("input");
+        let btnAddWorker10 = document.createElement("button");
 
-            let inputAddName = document.createElement("input");
-            let inputAddAge = document.createElement("input");
-            let inputAddSalary = document.createElement("input");
-            let btnAddWorker = document.createElement("button");
+        inputAddName10.placeholder = "Имя";
+        inputAddAge10.placeholder = "Возраст";
+        inputAddSalary10.placeholder = "Зарплата";
+        btnAddWorker10.textContent = "Отправить";
 
-            inputAddName.placeholder = "Имя";
-            inputAddAge.placeholder = "Возраст";
-            inputAddSalary.placeholder = "Зарплата";
-            btnAddWorker.textContent = "Отправить";
+        btnAddWorker10.addEventListener("click", function () {
+            if ( validateInputs(inputAddAge10, inputAddName10, inputAddSalary10)) {
 
-            employees10.forEach(item => {
                 let li = document.createElement("li");
 
                 let name = document.createElement("span");
-                name.textContent = item.name;
+                name.textContent = inputAddName10.value;
                 name.classList.add("padding-5")
                 name.addEventListener("click", addEdit);
                 li.append(name);
 
                 let age = document.createElement("span");
-                age.textContent = item.age;
+                age.textContent = inputAddAge10.value;
                 age.classList.add("padding-5")
                 age.addEventListener("click", addEdit);
                 li.append(age);
 
                 let salary = document.createElement("span");
-                salary.textContent = item.salary;
+                salary.textContent = inputAddSalary10.value;
                 salary.classList.add("padding-5")
                 salary.addEventListener("click", addEdit);
                 li.append(salary);
 
                 addRemove(li);
-                ul.append(li);
-            });
 
-            btn10.insertAdjacentElement("afterend", ul);
-
-            ul.insertAdjacentElement("afterend", btnAddWorker);
-            ul.insertAdjacentElement("afterend", inputAddSalary);
-            ul.insertAdjacentElement("afterend", inputAddAge);
-            ul.insertAdjacentElement("afterend", inputAddName);
-
-            btn10.removeEventListener("click", showElements);
-
-            btnAddWorker.addEventListener("click", function () {
-                if ( validateInputs(inputAddAge, inputAddName, inputAddSalary)) {
-
-                    let li = document.createElement("li");
-
-                    let name = document.createElement("span");
-                    name.textContent = inputAddName.value;
-                    name.classList.add("padding-5")
-                    name.addEventListener("click", addEdit);
-                    li.append(name);
-
-                    let age = document.createElement("span");
-                    age.textContent = inputAddAge.value;
-                    age.classList.add("padding-5")
-                    age.addEventListener("click", addEdit);
-                    li.append(age);
-
-                    let salary = document.createElement("span");
-                    salary.textContent = inputAddSalary.value;
-                    salary.classList.add("padding-5")
-                    salary.addEventListener("click", addEdit);
-                    li.append(salary);
-
-                    addRemove(li);
-
-                    ul.append(li);
-                }
-            });
+                newContainer10.container.append(li);
+            }
         });
+        
+        const newContainer10 = new ContainerManager(".btn10", "ul", employees10, item => {
+            let li = document.createElement("li");
+
+            let name = document.createElement("span");
+            name.textContent = item.name;
+            name.classList.add("padding-5")
+            name.addEventListener("click", addEdit);
+            li.append(name);
+
+            let age = document.createElement("span");
+            age.textContent = item.age;
+            age.classList.add("padding-5")
+            age.addEventListener("click", addEdit);
+            li.append(age);
+
+            let salary = document.createElement("span");
+            salary.textContent = item.salary;
+            salary.classList.add("padding-5")
+            salary.addEventListener("click", addEdit);
+            li.append(salary);
+
+            addRemove(li);
+
+            return li;
+        }, btnAddWorker10, inputAddSalary10, inputAddAge10, inputAddName10);
+
+        newContainer10.init();
 
         function addEdit () {
             let input = document.createElement("input");
@@ -320,20 +308,37 @@
                 });
         }
 
-    function validateInput(input) {
-        if (!input.value.trim()) {
-            input.classList.add("error");
-            return false;
-        }
-        input.classList.remove("error");
-        return true;
-    }
+        function addCrossOut (elem) {
+                let a = document.createElement("a");
 
-    function validateInputs(...args) {
-        let results = ( args.map(item => validateInput(item)) );
-        if (results.includes(false)) alert("Поле не может быть пустым");
-        return !( results.includes(false) );
-    }
+                a.textContent = "Перечеркнуть";
+                a.href = "#";
+                a.classList.add("link");
+
+                elem.append(a);
+
+                a.addEventListener("click", function (event) {
+                    let span = elem.querySelector("span");
+
+                    span.classList.toggle("crossOut");
+                    a.classList.toggle("active");
+                });
+            }
+
+        function validateInput(input) {
+            if (!input.value.trim()) {
+                input.classList.add("error");
+                return false;
+            }
+            input.classList.remove("error");
+            return true;
+        }
+    
+        function validateInputs(...args) {
+            let results = ( args.map(item => validateInput(item)) );
+            if (results.includes(false)) alert("Поле не может быть пустым");
+            return !( results.includes(false) );
+        }
 
 
 
